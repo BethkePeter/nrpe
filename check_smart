@@ -1,0 +1,66 @@
+#!/bin/bash
+# Plugin das den Festplatten zustand überprüft
+# benoetigt die smart Funktionen der Festplatte
+# Peter Bethke
+# Version 0.1
+# 22.3.2006 15:00
+
+
+smartctl="/usr/sbin/smartctl"
+sudo="/usr/bin/sudo"
+
+verbose=0
+
+function usage() {
+        cat <<-EOF
+        `basename $0` Nagios Plugin zur Festplatten Ueberpruefung per smart
+
+        Diese Optionen sind verfuegbar:         Default:
+
+        -f      Konfigurationsdatei              $datei
+        -d      device
+        -v      verbose mode
+        -h      show usage
+EOF
+}
+
+while getopts f:d:vh option
+do
+        case $option in
+                d) device=$OPTARG
+                        ;;
+                v) verbose=1
+                        ;;
+                f) datei=$OPTARG
+                        ;;
+                h) usage
+                        exit 2
+                        ;;
+                *) echo unrecognized option: $OPT
+                        usage
+                        exit 2
+                        ;;
+        esac
+done
+
+if [ -z "$device" ]; then
+	echo "Device File noetig"
+	exit 1
+fi
+
+if [ $verbose == 1 ]; then
+	$sudo -u root $smartctl -a -H $device
+	result=$?
+else
+	$sudo -u root $smartctl -q errorsonly -H $device
+	result=$?
+fi
+
+if [ $result -eq 0 ]; then
+	echo "Disk OK"
+	exit 0
+else
+	echo "Disk Fehlerhaft"
+	exit 1
+fi
+
