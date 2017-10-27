@@ -24,6 +24,7 @@ function usage() {
 EOF
 }
 
+# Hier ist eine dringende Aenderung fuer den Hotfix
 while getopts f:d:vh option
 do
         case $option in
