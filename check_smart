@@ -2,8 +2,10 @@
 # Plugin das den Festplatten zustand ueberprueft
 # benoetigt die smart Funktionen der Festplatte
 # Peter Bethke
-# Version 0.1
-# 22.3.2006 15:00
+# Version 0.1.1
+# 27.10.2017
+# Issue 53 bearbeitet, test zum erlenen des branck und merge
+# Jetzt bin ich fertig
 
 
 smartctl="/usr/sbin/smartctl"
