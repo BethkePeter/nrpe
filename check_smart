@@ -4,8 +4,7 @@
 # Peter Bethke
 # Version 0.1.1
 # 27.10.2017
-# Issue 53 bearbeitet, test zum erlenen des branck und merge
-# Jetzt bin ich fertig
+# das kann jetzt wieder raus
 
 
 smartctl="/usr/sbin/smartctl"
@@ -26,7 +25,6 @@ function usage() {
 EOF
 }
 
-# Hier ist eine dringende Aenderung fuer den Hotfix
 while getopts f:d:vh option
 do
         case $option in
