@@ -1,5 +1,5 @@
 #!/bin/bash
-# Plugin das den Festplatten zustand überprüft
+# Plugin das den Festplatten zustand ueberprueft
 # benoetigt die smart Funktionen der Festplatte
 # Peter Bethke
 # Version 0.1
